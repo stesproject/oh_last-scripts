@@ -11,7 +11,7 @@ class Game_Player < Game_Character
   #--------------------------------------------------------------------------
   CENTER_X = (544 / 2 - 16) * 8     # Screen center X coordinate * 8
   CENTER_Y = (416 / 2 - 16) * 8     # Screen center Y coordinate * 8
-  BLOCK_MOVEMENTS_SWITCH = 1
+  BLOCK_MOVEMENTS_SWITCH = 250
   #--------------------------------------------------------------------------
   # * Public Instance Variables
   #--------------------------------------------------------------------------
