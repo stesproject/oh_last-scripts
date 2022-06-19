@@ -1,5 +1,5 @@
 ##################################################
-# Scene Title Screen Miria V1.0                                    #
+# Scene Title Screen Miria V1.0                                    
 ##################################################
 # By Moghunter
 # http://www.atelier-rgss.com
@@ -54,17 +54,14 @@ TPLANE3_X = 2
 # Velocidade de movimento da camada 2 na vertical.
 TPLANE3_Y = 0
 
-ARROWS_X = 329
-ARROWS_Y = 319
+TITLE_X = 0
+TITLE_Y = 20
 
-OPTIONS_X = 339
-OPTIONS_Y = 205
+ARROWS_X = 365
+ARROWS_Y = 305
 
-CONTAINER_X = 324
-CONTAINER_Y = 189
-
-CURSOR_X = 482
-CURSOR_Y = 213
+COMMANDS_X = 344
+COMMANDS_Y = 265
 end
 #-------------------------------------------------
 $mogscript = {} if $mogscript == nil
@@ -105,7 +102,7 @@ $full_screen = 0
 class Scene_Title
 attr_accessor :title_commands
 include  MOG_VX01
-    def main
+  def main
     if $BTEST                       
       battle_test                     
     return
@@ -181,16 +178,13 @@ include  MOG_VX01
   end
   def update
     @command_window.update
-     case @command_window.index
-     when 0
-     @com.bitmap = Cache.title("Com_01") 
-     when 1
-     @com.bitmap = Cache.title("Com_02")   
-     when 2
-     @com.bitmap = Cache.title("Com_03") 
-   end       
-    @sprite_title.opacity += 2
-    @com.opacity += 2 if @sprite_title.opacity > 150
+    comm = "Com_0#{@command_window.index + 1}"
+    @com.bitmap = Cache.title(comm)
+    @com.x = COMMANDS_X
+    @com.y = COMMANDS_Y
+
+    @sprite_title.opacity += FADE_IN_SPEED
+    @com.opacity += FADE_IN_SPEED if @sprite_title.opacity > 150
     @sprite.ox += TPLANE1_X
     @sprite.oy += TPLANE1_Y
     @sprite2.ox += TPLANE2_X
@@ -199,19 +193,6 @@ include  MOG_VX01
     @sprite3.oy += TPLANE3_Y
     @sprite_title.update if TWAVE == true
     @arrows.opacity = @command_window.index == 3 ? 255 : 0
-    #@cursor.x = @command_window.index != 3 ? CURSOR_X : CURSOR_X + 15
-    case @command_window.index
-    when 0 #new game
-      @com.color = Color.new(0,158,255) 
-    when 1 #continue
-      @com.color = Color.new(255,68,0) 
-    when 2 #website
-      @com.color = Color.new(143,0,255) 
-    when 3 #language
-      @com.color = Color.new(0,66,255) 
-    when 4 #quit
-      @com.color = Color.new(0,9,255) 
-    end
     if Input.trigger?(Input::C)
       case @command_window.index
       when 0    #New game
@@ -296,23 +277,14 @@ include  MOG_VX01
     @sprite_title = Sprite.new    
     @sprite_title.bitmap = Cache.title("Title")  
     @sprite_title.opacity = 0
+    @sprite_title.x = TITLE_X
+    @sprite_title.y = TITLE_Y
     @com = Sprite.new
     @com.bitmap = Cache.title("Com_01")  
     @com.opacity = 0
-    @com.color = Color.new(0,158,255) #new game
-    @com.blend_type = 2
     @arrows = Sprite.new
     @arrows.bitmap = Cache.title("Arrows")
     @arrows.opacity = 0
-   #@options = Sprite.new
-   #@options.bitmap = Cache.title("Options")
-   #@options.opacity = 0
-   #@container = Sprite.new
-   #@container.bitmap = Cache.title("Container")
-   #@container.opacity = 0
-   #@cursor = Sprite.new
-   #@cursor.bitmap = Cache.title("Cursor")  
-   #@cursor.opacity = 0
     @sprite = Plane.new    
     @sprite.bitmap = Cache.title("Plane1")
     @sprite2 = Plane.new 
@@ -324,15 +296,12 @@ include  MOG_VX01
     @sprite3.opacity = TPLANE3_OPA    
     @sprite.z  = 1
     @sprite2.z = 2
-    @sprite3.z = 3
+    @sprite3.z = 5
     @com.z = 4
-    #@cursor.x = CURSOR_X
-    #@cursor.y = CURSOR_Y
-    #@cursor.z = 7
     @arrows.x = ARROWS_X
     @arrows.y = ARROWS_Y
     @arrows.z = 7
-    @sprite_title.z = 5    
+    @sprite_title.z = 3  
   if TWAVE == true
     @sprite_title.wave_amp = 8
     @sprite_title.wave_length = 240
@@ -345,16 +314,11 @@ include  MOG_VX01
     @sprite3.bitmap.dispose    
     @com.bitmap.dispose    
     @arrows.bitmap.dispose    
-    #@options.bitmap.dispose    
-    #@container.bitmap.dispose    
-    #@cursor.bitmap.dispose  
     @sprite_title.bitmap.dispose 
     @sprite.dispose
     @sprite2.dispose
     @sprite3.dispose
     @arrows.dispose
-    #@options.dispose
-    #@container.dispose
     @com.dispose
     @sprite_title.dispose
     @text_window.dispose
@@ -383,9 +347,6 @@ include  MOG_VX01
     @sprite_title.opacity -= FADE_OUT_SPEED
     @sprite_title.update if TWAVE == true    
     @com.opacity -= FADE_OUT_SPEED
-    #@options.opacity -= FADE_OUT_SPEED
-    #@container.opacity -= FADE_OUT_SPEED
-    #@cursor.opacity -= FADE_OUT_SPEED
      case @command_window.index
      when 0    
      @sprite.zoom_x += 0.01
@@ -470,7 +431,6 @@ include  MOG_VX01
   def command_language(value = 1)
     Sound.play_decision
     $local.switch_language(value)
-    @options.bitmap = Cache.title("Options")
   end
   def command_shutdown    
     Sound.play_decision
