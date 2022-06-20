@@ -403,7 +403,7 @@ include  MOG_VX01
     $game_player.moveto($data_system.start_x, $data_system.start_y)
     $game_player.refresh
     $scene = Scene_Map.new
-    #Vars_Initialization.new
+    Vars_Initialization.new
     RPG::BGM.fade(1500)
     close_command_window
     Graphics.fadeout(60)

@@ -1135,10 +1135,10 @@ class Window_Message < Window_Selectable
         @gold_window.refresh
         @gold_window.open
       when "\x03" # \.  (wait 1/4 second)
-        @wait_count = 15
+        @wait_count = $game_switches[557] ? 0 : 15
         break
       when "\x04" # \|  (wait 1 second)
-        @wait_count = 60
+        @wait_count = $game_switches[557] ? 0 : 60
         break
       when "\x05" # \!  (Wait for input)
         self.pause = true
