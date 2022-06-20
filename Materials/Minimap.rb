@@ -128,8 +128,7 @@ end
 module KGC::MiniMap
   module Regexp
     # ミニマップ非表示
-    # NO_MINIMAP = /\[NOMAP\]/i
-    NO_MINIMAP = KGC::MiniMap::EXCLUDED_MAPS.include?($game_map.map_id)
+    NO_MINIMAP = /\[NOMAP\]/i
     # 障害物
     WALL_EVENT = /\[WALL\]/i
     # 移動イベント
@@ -208,7 +207,8 @@ class RPG::MapInfo
   # ○ ミニマップのキャッシュ生成
   #--------------------------------------------------------------------------
   def create_minimap_cache
-    @__minimap_show = !(@name =~ KGC::MiniMap::Regexp::NO_MINIMAP)
+    # @__minimap_show = !(@name =~ KGC::MiniMap::Regexp::NO_MINIMAP)
+    @__minimap_show = !(KGC::MiniMap::EXCLUDED_MAPS.include?($game_map.map_id))
   end
   #--------------------------------------------------------------------------
   # ○ ミニマップ表示

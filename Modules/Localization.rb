@@ -42,41 +42,25 @@ class Localization
     "shop_buy" => 11,
     "shop_sell" => 12,
     "shop_cancel" => 13,
-    "new_game" => 14,
-    "continue" => 15,
+    
     "shutdown" => 16,
-    "game_end" => 17,
+    
     "to_title" => 18,
     "save" => 19,
     "item" => 20,
     "equipment" => 21,
-    "level" => 22,
-    "remove" => 23,
-    "upgrade_weap" => 24,
-    "proceed" => 25,
+    
     "obtain" => 26,
-    "stats" => 27,
-    "skins" => 28,
-    "trophy-hall" => 29,
-    "equip" => 30,
-    "attack" => 31,
-    "locked" => 32,
-    "cheat_price" => 33,
+    
     "quit" => 34,
-    "unlock" => 35,
-    "can_use" => 36,
-    "website" => 37,
-    "menu_language" => 38,
+    
     "lose" => 39,
     "use_item" => 40,
-    "a-lot" => 41,
-    "using" => 42,
-    "view" => 43,
+    
     "find" => 44,
     "gave" => 45,
     "got" => 46,
-    "act" => 47,
-    "act-completed" => 48,
+    
     "the-m" => 49,
     "the-f" => 50,
     "the-m-pl" => 51,
@@ -86,15 +70,9 @@ class Localization
     "fury" => 55,
     "king" => 56,
     "sage" => 57,
-    "general" => 58,
+    "grin" => 58,
     "enable" => 59,
-    "disable" => 60,
-    "fiery" => 61,
-    "icy" => 62,
-    "electric" => 63,
-    "upgrade_to_use" => 64,
-    "defence" => 65,
-    "upgrade_armor" => 66
+    "disable" => 60
   }
 
   MAPS_INDEXES = {
@@ -418,9 +396,9 @@ class Localization
 
   def convert_special_characters
     # Woratana's :: Weapon Name
-    @msg_block = @msg_block.gsub(/\\NW\[([0-9]+)\]/i) { $data_weapons[$1.to_i].name }
+    # @msg_block = @msg_block.gsub(/\\NW\[([0-9]+)\]/i) { $data_weapons[$1.to_i].name }
     # Woratana's :: Item Name
-    @msg_block = @msg_block.gsub(/\\NI\[([0-9]+)\]/i) { $data_items[$1.to_i].name}
+    # @msg_block = @msg_block.gsub(/\\NI\[([0-9]+)\]/i) { $data_items[$1.to_i].name}
     # Character Name
     @msg_block = @msg_block.gsub(/\\N\[([0-9]+)\]/i) { get_text($game_actors[$1.to_i].name) }
     # Ste's :: Map Name

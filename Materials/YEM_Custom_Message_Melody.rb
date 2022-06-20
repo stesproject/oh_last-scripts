@@ -204,6 +204,17 @@ module YEM
     # exist on the player's computer, the next font in question will be used
     # in place instead and so on.
     MESSAGE_WINDOW_FONT = ["Verdana", "Arial", "Courier New"]
+
+    MSG_BACKGROUND = {
+      "normal"      => 0,
+      "dark"        => 1,
+      "transparent" => 2
+    }
+    MSG_POSITION = {
+      "bottom"   => 2,
+      "middle"   => 1,
+      "top"      => 0
+    }
     
   end # MESSAGE
 end # YEM
@@ -316,8 +327,8 @@ class Game_Interpreter
     unless $game_message.busy
       $game_message.face_name = @params[0]
       $game_message.face_index = @params[1]
-      $game_message.background = @params[2]
-      $game_message.position = @params[3]
+      $game_message.background = $msg_params ? YEM::MESSAGE::MSG_BACKGROUND[$msg_params[0]] : @params[2]
+      $game_message.position = $msg_params ? YEM::MESSAGE::MSG_POSITION[$msg_params[1]] : @params[3]
       flow = true
       loop {
         if @list[@index].code == 101 and meet_stringing_conditions and flow
@@ -924,7 +935,7 @@ class Window_MessageChoice < Window_Selectable
       rect.width = (contents.width + @spacing) / @column_max - @spacing - 112
       rect.height = WLH
       rect.x = 112 + index % @column_max * (rect.width + @spacing)
-      rect.y = index / @column_max * WLH
+      rect.y = (index / @column_max * WLH)
       return rect
     else
       return super(index)
@@ -965,7 +976,8 @@ class Window_Message < Window_Selectable
     #-------------------------------------------------------------
     # Default REGEXP Conversions
     #-------------------------------------------------------------
-    @text.gsub!(/\\N\[0\]/i)        { $game_party.members[0].name }
+    # @text.gsub!(/\\N\[0\]/i)        { $game_party.members[0].name }
+    @text.gsub!(/\\N\[0\]/i)        { $local.get_text($game_actors[$1.to_i].name) }
     @text.gsub!(/\\F\[(\d+)\]/i)    { Window_Message.actor_face_art($1.to_i) }
     @text.gsub!(/\\N\[(\d+)\]/i)    { $game_actors[$1.to_i].name }
     @text.gsub!(/\\C\[(\d+)\]/i)    { "\x01{#{$1}}" }
