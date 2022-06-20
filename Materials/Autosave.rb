@@ -459,8 +459,10 @@ class Window_NSS_SlotDetail < Window_Base
         if DRAW_FACE
           # Draw Face
           contents.fill_rect(face_x_base, face_y_base, 84, 84, FACE_BORDER)
-          draw_face(actor.face_name, actor.face_index, face_x_base + 2,
-          face_y_base + 2, 80)
+          draw_character(actor.character_name, actor,character_index, face_x_base + 2,
+          face_y_base + 2)
+          # draw_face(actor.face_name, actor.face_index, face_x_base + 2,
+          # face_y_base + 2, 80)
         end
         if DRAW_LEVEL
           # Draw Level

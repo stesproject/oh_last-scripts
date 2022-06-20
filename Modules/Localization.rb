@@ -7,9 +7,11 @@ class Localization
   attr_accessor :msg_block
   attr_accessor :words
   attr_accessor :message_row
+  attr_accessor :row_max_length
 
   NEW_LINE_CHAR = "§"
   ROW_LENGTH_MAX = $lang == "en" ? 50 : 52
+  ROW_FACE_LENGTH_MAX = $lang == "en" ? 40 : 42
   MESSAGES_MAX = 4
   SPECIAL_SYMBOLS = /\\nb\[(.*?)\]|\\\||\\\.|\\\^|\\g|\\c\[([0-9]+)\]|#{NEW_LINE_CHAR}/i
   SPECIAL_CHARS = /([àèìòùéÈ])+/
@@ -26,7 +28,7 @@ class Localization
   }
 
   COMMON_INDEXES = {
-}
+  }
 
   VOCABS_INDEXES = {
     "cannot_save" => 1,
@@ -137,6 +139,10 @@ class Localization
     attr_accessor :desc
   end
 
+  def initialize
+    @row_max_length = ROW_LENGTH_MAX
+  end
+
   def switch_language(value = 1)
     new_lang_index = LANG.index($lang) + value
     if new_lang_index < 0
@@ -219,8 +225,10 @@ class Localization
 
   def set_msg(map_id, index)
     reset_msg_vars
+    
     map_id = map_id == nil ? $game_map.map_id : map_id
     line_data = $maps_data[map_id][index]
+    set_row_max_length(line_data)
     split_data(line_data)
     
     if messages_exceed_max?
@@ -235,6 +243,7 @@ class Localization
 
     index = COMMON_INDEXES[name]
     line_data = $common_data[index]
+    set_row_max_length(line_data)
     split_data(line_data)
 
     if messages_exceed_max?
@@ -436,10 +445,14 @@ class Localization
     end
   end
 
+  def set_row_max_length(message)
+    @row_max_length = message.include?('\f[') ? ROW_FACE_LENGTH_MAX : ROW_LENGTH_MAX
+  end
+
   def row_length_max_reached?(row)
     row_cleaned = row.gsub(SPECIAL_SYMBOLS) {}
     row_cleaned = row_cleaned.gsub(SPECIAL_CHARS) {"a"}
-    return row_cleaned.size >= ROW_LENGTH_MAX
+    return row_cleaned.size >= @row_max_length
   end
 
   def add_word_to_row(word)

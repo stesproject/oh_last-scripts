@@ -136,7 +136,7 @@ module YEM
     NAME_WINDOW_Y = 40       # Adjusts Y position offset from Message Window.
     NAME_WINDOW_W = 20       # Adjusts extra width added to the Name Window.
     NAME_WINDOW_H = 40       # Adjusts the height of the Name Window.
-    NAME_COLOUR   = 15        # Default colour used for name box.
+    NAME_COLOUR   = 0        # Default colour used for name box.
     
     # The following lets you adjust whether or not you would like to see the
     # back of the name window.
