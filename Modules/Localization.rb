@@ -15,8 +15,8 @@ class Localization
   SPECIAL_CHARS = /([àèìòùéÈ])+/
 
   $default_language = ""
-  $msg_var = [561,562,563,564]
-  $param_var = 49
+  $msg_var = [161,162,163,164]
+  $param_var = 165
   @messages = nil
 
   LANG = ["en", "it"]
@@ -26,28 +26,6 @@ class Localization
   }
 
   COMMON_INDEXES = {
-    "cant_control" => 1,
-    "no_item" => 2,
-    "tay_can_control" => 3,
-    "swordcase" => 4,
-    "already_equipped" => 5,
-    "to_upgrade" => 6,
-    "press_to_upgrade" => 7,
-    "not_enough_globes" => 8,
-    "door_closed" => 9,
-    "not_now" => 10,
-    "an_obelisk" => 11,
-    "obelisk1" => 12,
-    "obelisk2" => 13,
-    "obelisk3" => 14,
-    "obelisk4" => 15,
-    "obelisk5" => 16,
-    "not_enough_eggs" => 17,
-    "to_upgrade_w_item" => 18,
-    "not_1_item" => 19,
-    "not_enough_d" => 20,
-    "cant_upgrade_armor" => 21,
-    "def_up" => 22
 }
 
   VOCABS_INDEXES = {
@@ -120,81 +98,60 @@ class Localization
   }
 
   MAPS_INDEXES = {
-    "Green Forest" => 1,
+    "Royal Gardens" => 1,
     "Castle Grounds" => 2,
-    "Castle Dungeons" => 3,
+    "Lost Valley" => 3,
     "Kings Castle" => 4,
     "Throne Room" => 5,
-    "Teorhemas Vault" => 6,
+    "Deserted Lands" => 6,
     "Arena" => 7,
-    "Wild Valley" => 8,
-    "Rocky Mountains" => 9,
+    "Laboratory" => 8,
+    "Shelter" => 9,
     "Dead Valley" => 10,
-    "Abyssal Waterfalls" => 11,
-    "Forest of the All-Eye Monster" => 12,
-    "Cyberspace" => 13,
-    "Kingdom Outskirts" => 14,
-    "Race" => 15,
-    "Ancient Ruins" => 16,
-    "Final Battle" => 17,
-    "Water City" => 18,
-    "Sky" => 19,
+    "Seabed" => 11,
+    "The Great Cluster" => 12,
+    "Fire Kingdom" => 13,
+    "Forbidden Jungle" => 14,
+    "Secret Laboratory" => 15,
+    "Final Act" => 16,
+    "Finalboss" => 17,
+    "Abandoned Area" => 18
   }
 
   DB_INDEXES = {
     "Meat" => 1,
-    "Egg" => 2,
-    "Health Potion" => 3,
-    "Red Globes" => 4,
-    "Pebbles" => 5,
-    "Ingots" => 6,
-    "King's Key" => 7,
-    "Silver Key" => 8,
-    "Controller Crystal" => 9,
-    "Obelisk Key" => 10,
-    "Regenerator" => 11,
-    "Controls" => 12,
-    "Spada Dorata" => 13,
-    "Spada Antica" => 14,
-    "Spada di Pietra" => 15,
-    "Spada del Soldato" => 16,
-    "AmmazzaZombie" => 17,
-    "Spada della Rivolta" => 18,
-    "Spada della Rivolta 2" => 19,
-    "Gladiator" => 20,
-    "Gladius" => 21,
-    "Gladius Perfezionato" => 22,
-    "Spada di Fuoco" => 23,
-    "Spada di Carbone" => 24,
-    "Spada Lucente" => 25,
-    "Spada di Platino" => 26,
-    "Spada della Rivolta Finale" => 27,
-    "Spada Spirituale" => 28,
-    "Gelizedor" => 29,
-    "Spada Cannone" => 30,
-    "Spada di Ghiaccio" => 31,
-    "Spada Infernale" => 32,
-    "Spada d'Argento" => 33,
-    "Elettrogen" => 34,
-    "Spada del Drago" => 35,
-    "Ultimate Sword" => 36,
-    "King's Crown" => 37,
-    "Perla Fuoco" => 38,
-    "Perla Ghiaccio" => 39,
-    "Perla Luce" => 40,
-    "Armor Powerup" => 41,
-    "Power Glove" => 42,
-    "cheat_1" => 43,
-    "cheat_2" => 44,
-    "cheat_3" => 45,
-    "cheat_4" => 46,
-    "cheat_5" => 47,
-    "cheat_6" => 48,
-    "Armor" => 49,
-    "Munizioni" => 50,
-    "currency" => 51,
-    "Fodera" => 52,
-    "Ultimate Armor" => 53
+    "Diamond" => 2,
+    "Chest Key" => 3,
+    "Laboratory Key" => 4,
+    "Invulnerability" => 5,
+    "Destroyer" => 6,
+    "Potion" => 7,
+    "Rifle Burst" => 8,
+    "Fury's Armor" => 9,
+    "Medallion" => 10,
+    "Laser Rifle" => 11,
+    "Sea Key" => 12,
+    "Accelerator Vial" => 13,
+    "Water Barrier" => 14,
+    "Plasma Rifle" => 15,
+    "Dragon Egg" => 16,
+    # "" => 17,
+    "Skill: Barrier" => 18,
+    "Skill: Frost" => 19,
+    "Skill: Rage" => 20,
+    "Sages Water" => 21,
+    # "" => 22,
+    "Iron Suit Burst" => 23,
+    "Rampage PlasmaGen" => 24,
+    "Rifle Burst" => 25,
+    "Saver" => 26,
+    "King's Sword" => 27,
+    "Mechanical Sword" => 28,
+    "Iron Suit Cannon" => 29,
+    "Futuristic Hyper Sword" => 30,
+    "Scabbard" => 31,
+    "Cyborg Sword" => 32,
+    "Energy Sword" => 33
   }
 
   class ItemText
@@ -332,6 +289,7 @@ class Localization
     set_msg_vars
   end
 
+  #TODO: not used
   def set_act_completed(index)
     reset_msg_vars
 
@@ -390,6 +348,7 @@ class Localization
     set_msg_vars
   end
 
+  #TODO: not used
   def set_weapon_stats(index)
     reset_msg_vars
 
@@ -423,6 +382,7 @@ class Localization
     set_msg_vars
   end
 
+  #TODO: not used
   def set_item_details(item_name, n)
     reset_msg_vars
 

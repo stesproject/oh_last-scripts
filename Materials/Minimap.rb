@@ -34,6 +34,9 @@ module MiniMap
   # Here you may assign an in-game switch number to activate/deactivate the map.
   MINIMAP_SWITCH_ID = 5
 
+  #                          ◆ Excluded Maps ◆
+  EXCLUDED_MAPS = [15, 26, 33, 125, 152, 153, 154, 156, 157, 159, 160]
+
   #                   ◆ MiniMap Display Properties ◆
   # Here you may specify the X and Y coordinates as well as the width and height
   # of the MiniMap. 
@@ -125,7 +128,8 @@ end
 module KGC::MiniMap
   module Regexp
     # ミニマップ非表示
-    NO_MINIMAP = /\[NOMAP\]/i
+    # NO_MINIMAP = /\[NOMAP\]/i
+    NO_MINIMAP = KGC::MiniMap::EXCLUDED_MAPS.include?($game_map.map_id)
     # 障害物
     WALL_EVENT = /\[WALL\]/i
     # 移動イベント
