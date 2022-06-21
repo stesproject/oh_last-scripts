@@ -1169,7 +1169,7 @@ class Game_Interpreter
   # * Wait
   #--------------------------------------------------------------------------
   def command_230
-    @wait_count = $game_switches[557] ? 1 : $wait && $wait > 0 ? $wait : @params[0]
+    @wait_count = $game_switches[558] ? 1 : $wait && $wait > 0 ? $wait : @params[0]
     $wait = 0
     return true
   end

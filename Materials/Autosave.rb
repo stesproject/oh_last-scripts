@@ -30,7 +30,7 @@ SAVE_AFTER_WINNING_BATTLE = 12
 #Questo è  un'ID switch, se ON disabilità l'autosalvataggio dopo aver chiuso il menu
 SAVE_AFTER_CLOSING_MENU = 13
 
-NOT_END_COMMAND_MAPS = [114] #TO CHECK
+NOT_END_COMMAND_MAPS = [114] #TODO CHECK
 
 #===============================================================
 # ? [VX] ? Neo Save System III ? ?
