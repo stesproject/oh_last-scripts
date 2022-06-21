@@ -1,7 +1,11 @@
 #==============================================================================
 # Localization script
 # Author: Ste
-# Version: 2.0
+# Version: 2.1
+# Date: 21-06-2022
+# Change Log:
+#   v2.1:
+#     - Improved set_action method, now it takes an array of items.
 #==============================================================================
 class Localization
   attr_accessor :msg_block
@@ -253,26 +257,33 @@ class Localization
     end
   end
 
-  def set_action(action, item, value, item2 = nil, value2 = nil, item_data = nil, code = "")
+  def set_action(action, items, code = "")
     reset_msg_vars
     
     text = get_text(action)
     @messages.push(text)
 
-    if (item_data != nil && item_data.note != "" && value > 1)
-      item = get_plural(item_data)
-    end
+    for item_data in items
+      item = item_data.item
+      value = item_data.value
+      show_icon = item_data.show_icon
 
-    amount = value > 0 ? value.to_s + " " : value < 0 ? "#{get_text("a-lot")} " : ""
-    @messages.push("#{code}#{amount}#{item}!")
+      name = item.name
+      if (item.note != "" && value > 1)
+        name = get_plural(item)
+      end
 
-    if (item2 != nil && value2 != nil)
-      amount = value2 > 0 ? value2.to_s + " " : ""
-      @messages.push("#{code}#{amount}#{item2}!")
+      icon = ""
+      if show_icon
+        icon = "\\i[#{item.icon_index}]"
+      end
+
+      amount = value > 0 ? value.to_s + " " : value < 0 ? "#{get_text("a-lot")} " : ""
+
+      @messages.push("#{icon}#{code}#{amount}#{name}!")
     end
 
     $msg_params = ["normal", "bottom"]
-
     set_msg_vars
   end
 
@@ -408,6 +419,7 @@ class Localization
     # @msg_block = @msg_block.gsub(/\\NW\[([0-9]+)\]/i) { $data_weapons[$1.to_i].name }
     # Woratana's :: Item Name
     # @msg_block = @msg_block.gsub(/\\NI\[([0-9]+)\]/i) { $data_items[$1.to_i].name}
+
     # Character Name
     @msg_block = @msg_block.gsub(/\\N\[([0-9]+)\]/i) { get_text($game_actors[$1.to_i].name) }
     # Ste's :: Map Name
