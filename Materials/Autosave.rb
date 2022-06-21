@@ -261,6 +261,7 @@ class Scene_File < Scene_Base
     Graphics.wait(40)
     @last_bgm.play
     @last_bgs.play
+    //TODO CHECK
     $game_map.screen.pictures[20].erase
     if !NOT_END_COMMAND_MAPS.include?($game_map.map_id)
       $game_map.interpreter.command_end
