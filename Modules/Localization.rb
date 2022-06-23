@@ -32,6 +32,33 @@ class Localization
   }
 
   COMMON_INDEXES = {
+    "help1" => 1,
+    "help2" => 2,
+    "help3" => 3,
+    "help4" => 4,
+    "help5" => 5,
+    "help6" => 6,
+    "help7" => 7,
+    "help8" => 8,
+    "help9" => 9,
+    "help10" => 10,
+    "help11" => 11,
+    "help12" => 12,
+    "help13" => 13,
+    "help14" => 14,
+    "help15" => 15,
+    "help16" => 16,
+    "help17" => 17,
+    "help18" => 18,
+    "help19" => 19,
+    "to_shelter" => 20,
+    "to_shelter_ok" => 21,
+    "to_shelter_ko" => 22,
+    "unlock_mission" => 23,
+    "not_enough" => 24,
+    "mission1_a" => 25,
+    "mission1_b" => 26,
+    "mission1_c" => 27
   }
 
   VOCABS_INDEXES = {
@@ -48,7 +75,8 @@ class Localization
     "shop_buy" => 11,
     "shop_sell" => 12,
     "shop_cancel" => 13,
-    
+    "accept" => 14,
+    "refuse" => 15,
     "shutdown" => 16,
     
     "to_title" => 18,
