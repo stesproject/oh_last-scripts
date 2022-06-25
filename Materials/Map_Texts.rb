@@ -1,7 +1,10 @@
 #==============================================================================
 # MapTexts script
 # Author: Ste
-# Version: 1.0
+# Version: 1.1
+# Date: 25-06-2022
+# Change Log:
+#     - Add font size and alignment parameters
 #==============================================================================
 
 # ** Spriteset_Map
@@ -62,12 +65,16 @@ class Window_MapTexts < Window_Base
   #--------------------------------------------------------------------------
   # * Object Initialization
   #--------------------------------------------------------------------------
-  def initialize(texts="", lh=32, x=0, y=0)
+  def initialize(texts="", lh=32, x=0, y=0, font_size = 16, align = 1)
     super(x, y, 544, 416)
     self.visible = false
     self.openness = 255
     self.back_opacity = 0
     self.opacity = 0
+    self.contents.font.size = font_size
+    self.contents.font.color = normal_color
+    self.contents.font.italic = false
+    @align = align
     @texts = texts
     @lh = lh
   end
@@ -77,11 +84,9 @@ class Window_MapTexts < Window_Base
   def refresh
     self.visible = true
     self.contents.clear
-    self.contents.font.color = normal_color
-    self.contents.font.italic = false
     lh = @lh
     @texts.each do |text|
-      self.contents.draw_text(0,0,504,lh,text,1)
+      self.contents.draw_text(0,0,504,lh,text,@align)
       lh += @lh
     end
   end

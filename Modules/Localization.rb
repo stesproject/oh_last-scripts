@@ -4,7 +4,7 @@
 # Version: 2.1
 # Date: 21-06-2022
 # Change Log:
-#   v2.1:
+#     - Add possibility to change row max length
 #     - Improved set_action method, now it takes an array of items.
 #==============================================================================
 class Localization
@@ -255,12 +255,12 @@ class Localization
     return plurals[LANG.index($lang)]
   end
 
-  def set_msg(map_id, index)
+  def set_msg(map_id, index, row_max_length = 0)
     reset_msg_vars
     
     map_id = map_id == nil ? $game_map.map_id : map_id
     line_data = $maps_data[map_id][index]
-    set_row_max_length(line_data)
+    set_row_max_length(line_data, row_max_length)
     split_data(line_data)
     
     if messages_exceed_max?
@@ -270,12 +270,12 @@ class Localization
     end
   end
 
-  def set_common_msg(name)
+  def set_common_msg(name, row_max_length = 0)
     reset_msg_vars
 
     index = COMMON_INDEXES[name]
     line_data = $common_data[index]
-    set_row_max_length(line_data)
+    set_row_max_length(line_data, row_max_length)
     split_data(line_data)
 
     if messages_exceed_max?
@@ -485,8 +485,8 @@ class Localization
     end
   end
 
-  def set_row_max_length(message)
-    @row_max_length = message.include?('\f[') ? ROW_FACE_LENGTH_MAX : ROW_LENGTH_MAX
+  def set_row_max_length(message, row_max_length = 0)
+    @row_max_length = row_max_length > 0 ? row_max_length : message.include?('\f[') ? ROW_FACE_LENGTH_MAX : ROW_LENGTH_MAX
   end
 
   def row_length_max_reached?(row)
