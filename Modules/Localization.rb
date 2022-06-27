@@ -58,7 +58,28 @@ class Localization
     "not_enough" => 24,
     "mission1_a" => 25,
     "mission1_b" => 26,
-    "mission1_c" => 27
+    "mission1_c" => 27,
+    "mission2_a" => 28,
+    "mission2_b" => 29,
+    "mission2_c" => 30,
+    "mission3_a" => 31,
+    "mission3_b" => 32,
+    "mission3_c" => 33,
+    "mission4_a" => 34,
+    "mission4_b" => 35,
+    "mission4_c" => 36,
+    "mission5_a" => 37,
+    "mission5_b" => 38,
+    "mission5_c" => 39,
+    "mission6_a" => 40,
+    "mission6_b" => 41,
+    "mission6_c" => 42,
+    "mission7_a" => 43,
+    "mission7_b" => 44,
+    "mission7_c" => 45,
+    "mission8_a" => 46,
+    "mission8_b" => 47,
+    "mission8_c" => 48
   }
 
   VOCABS_INDEXES = {
@@ -95,6 +116,7 @@ class Localization
     "gave" => 45,
     "got" => 46,
     
+    "saggioviola" => 48,
     "the-m" => 49,
     "the-f" => 50,
     "the-m-pl" => 51,
