@@ -38,7 +38,6 @@ class Game_Map
     @map = load_data(sprintf("Data/Map%03d.rvdata", @map_id))
     @display_x = 0
     @display_y = 0
-    self.screen.pictures[6].erase
     @passages = $data_system.passages
     referesh_vehicles
     setup_events
