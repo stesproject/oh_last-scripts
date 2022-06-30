@@ -79,7 +79,8 @@ class Localization
     "mission7_c" => 45,
     "mission8_a" => 46,
     "mission8_b" => 47,
-    "mission8_c" => 48
+    "mission8_c" => 48,
+    "underwater" => 49
   }
 
   VOCABS_INDEXES = {
@@ -185,7 +186,11 @@ class Localization
     "Futuristic Hyper Sword" => 30,
     "Scabbard" => 31,
     "Cyborg Sword" => 32,
-    "Energy Sword" => 33
+    "Energy Sword" => 33,
+    "Sword TC" => 34,
+    "Rifle TC" => 35,
+    "ESP" => 36,
+    "Dindini" => 37,
   }
 
   class ItemText
@@ -334,6 +339,34 @@ class Localization
     end
 
     $msg_params = ["normal", "bottom"]
+    set_msg_vars
+  end
+
+  def set_rewards(items)
+    reset_msg_vars
+    
+    for item_data in items
+      item = item_data.item
+      value = item_data.value
+      show_icon = true
+
+      name = item.name
+      if (item.note != "" && value > 1)
+        name = get_plural(item)
+      end
+
+      icon = ""
+      if show_icon
+        icon = "\\i[#{item.icon_index}]"
+      end
+
+      amount = value > 0 ? value.to_s + " " : ""
+
+      @messages.push("\\>                                      +#{amount} #{name} #{icon}")
+    end
+
+    @messages.push("\\g")
+    $msg_params = ["transparent", "middle"]
     set_msg_vars
   end
 
