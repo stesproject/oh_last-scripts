@@ -80,7 +80,9 @@ class Localization
     "mission8_a" => 46,
     "mission8_b" => 47,
     "mission8_c" => 48,
-    "underwater" => 49
+    "underwater" => 49,
+    "unlock_cards" => 50,
+    "unlock_card" => 51
   }
 
   VOCABS_INDEXES = {
