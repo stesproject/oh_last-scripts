@@ -70,6 +70,7 @@ class Game_Player < Game_Character
     if $game_map.map_id != @new_map_id
       $game_map.setup(@new_map_id)     # Move to other map
     end
+    $mapid = nil
     moveto(@new_x, @new_y)
   end
   #--------------------------------------------------------------------------

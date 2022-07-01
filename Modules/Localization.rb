@@ -1,9 +1,10 @@
 #==============================================================================
 # Localization script
 # Author: Ste
-# Version: 2.1
-# Date: 21-06-2022
+# Version: 2.2
+# Date: 01-07-2022
 # Change Log:
+#     - Can change globally row max length
 #     - Add possibility to change row max length
 #     - Improved set_action method, now it takes an array of items.
 #==============================================================================
@@ -14,8 +15,6 @@ class Localization
   attr_accessor :row_max_length
 
   NEW_LINE_CHAR = "§"
-  ROW_LENGTH_MAX = $lang == "en" ? 50 : 52
-  ROW_FACE_LENGTH_MAX = $lang == "en" ? 40 : 42
   MESSAGES_MAX = 4
   SPECIAL_SYMBOLS = /\\nb\[(.*?)\]|\\\||\\\.|\\\^|\\g|\\c\[([0-9]+)\]|#{NEW_LINE_CHAR}/i
   SPECIAL_CHARS = /([àèìòùéÈ])+/
@@ -30,6 +29,11 @@ class Localization
     "en" => "English",
     "it" => "Italiano"
   }
+  ROW_MAX_LENGTH = {
+    "en" => 50,
+    "it" => 52,
+  }
+  FACE_ROW_LENGTH_OFFSET = 10
 
   COMMON_INDEXES = {
     "help1" => 1,
@@ -201,7 +205,7 @@ class Localization
   end
 
   def initialize
-    @row_max_length = ROW_LENGTH_MAX
+    @row_max_length = ROW_MAX_LENGTH[$lang]
   end
 
   def switch_language(value = 1)
@@ -284,13 +288,14 @@ class Localization
     return plurals[LANG.index($lang)]
   end
 
-  def set_msg(map_id, index, row_max_length = 0)
+  def set_msg(map_id, index)
     reset_msg_vars
     
     map_id = map_id == nil ? $game_map.map_id : map_id
     line_data = $maps_data[map_id][index]
-    set_row_max_length(line_data, row_max_length)
+    set_row_max_length(line_data.include?('\f[') ? -FACE_ROW_LENGTH_OFFSET : 0)
     split_data(line_data)
+    set_row_max_length(line_data.include?('\f[') ? FACE_ROW_LENGTH_OFFSET : 0)
     
     if messages_exceed_max?
       p "Messages are over the limit! (#{@messages.size}/#{MESSAGES_MAX})"
@@ -299,13 +304,14 @@ class Localization
     end
   end
 
-  def set_common_msg(name, row_max_length = 0)
+  def set_common_msg(name)
     reset_msg_vars
 
     index = COMMON_INDEXES[name]
     line_data = $common_data[index]
-    set_row_max_length(line_data, row_max_length)
+    set_row_max_length(line_data.include?('\f[') ? -FACE_ROW_LENGTH_OFFSET : 0)
     split_data(line_data)
+    set_row_max_length(line_data.include?('\f[') ? -FACE_ROW_LENGTH_OFFSET : 0)
 
     if messages_exceed_max?
       p "Messages are over the limit! (#{@messages.size}/#{MESSAGES_MAX})"
@@ -542,8 +548,9 @@ class Localization
     end
   end
 
-  def set_row_max_length(message, row_max_length = 0)
-    @row_max_length = row_max_length > 0 ? row_max_length : message.include?('\f[') ? ROW_FACE_LENGTH_MAX : ROW_LENGTH_MAX
+  def set_row_max_length(row_max_length = 0)
+    new_length = @row_max_length + row_max_length
+    @row_max_length = new_length
   end
 
   def row_length_max_reached?(row)
