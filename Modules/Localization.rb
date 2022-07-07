@@ -86,7 +86,9 @@ class Localization
     "mission8_c" => 48,
     "underwater" => 49,
     "unlock_cards" => 50,
-    "unlock_card" => 51
+    "unlock_card" => 51,
+    "locked_chest" => 52,
+    "dispenser_out" => 53
   }
 
   VOCABS_INDEXES = {
@@ -111,6 +113,7 @@ class Localization
     "save" => 19,
     "item" => 20,
     "equipment" => 21,
+    "attack" => 22,
     
     "obtain" => 26,
     
@@ -176,7 +179,7 @@ class Localization
     "Water Barrier" => 14,
     "Plasma Rifle" => 15,
     "Dragon Egg" => 16,
-    # "" => 17,
+    "Card" => 17,
     "Skill: Barrier" => 18,
     "Skill: Frost" => 19,
     "Skill: Rage" => 20,
@@ -437,37 +440,17 @@ class Localization
     set_msg_vars
   end
 
-  #TODO: not used
   def set_weapon_stats(index)
     reset_msg_vars
 
     weapon = $data_weapons[index]
-    @messages.push("")
+    name = weapon.name
+    atk = weapon.atk.to_s
+    attack_text = get_text("attack")
 
-    if Weapons::CAN_UPGRADE.include?(index)
-      upgrade_data = weapon.note.split("\n")[0].split("/")
+    @messages.push("\\>            #{name} | #{attack_text}: \\c[3]#{atk}\\c[0].")
 
-      $game_variables[87] = upgrade_data[0].to_i # Red Globes / Id of the item needed to upgrade the weapon
-      if upgrade_data.size > 1
-        $game_variables[98] = upgrade_data[1].to_i # Counter value (determines the process speed)
-      else
-        $game_variables[95] = $data_items[$game_variables[87]].name # Item name needed to upgrade the weapon
-      end
-
-      if Weapons::UPGRADE_TO_USE.include?(index)
-        @messages.push(get_text("upgrade_to_use"))
-      else
-        @messages.push(get_text("equip"))
-      end
-
-      msg = "\\c[10]#{get_text("upgrade_weap")}\\c[15]"
-      @messages.push(msg)
-    else
-      @messages.push(get_text("equip"))
-    end
-
-    @messages.push("#{get_text("cancel")}")
-
+    $msg_params = ["transparent", "bottom"]
     set_msg_vars
   end
 
