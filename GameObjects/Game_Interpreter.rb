@@ -730,6 +730,7 @@ class Game_Interpreter
   def command_121
     for i in @params[0] .. @params[1]   # Batch control
       $game_switches[i] = (@params[2] == 0)
+      Utils.check_switch(i) #Add by Ste
     end
     $game_map.need_refresh = true
     return true
@@ -851,6 +852,7 @@ class Game_Interpreter
       if $game_variables[i] < -99999999   # Minimum limit check
         $game_variables[i] = -99999999
       end
+      Utils.check_variable(i) #Add by Ste
     end
     $game_map.need_refresh = true
     return true
