@@ -46,6 +46,10 @@ class Utils
       if $game_switches[195] && $game_variables[36] == 3
         $data_common_events[35] #Spiega Grin
       end
+    when 71 #tor totali
+      if $game_switches[270] && !$game_switches[271] && $game_variables[71] == 3
+        $data_common_events[45] #Torrette
+      end
     end
   end
 end

@@ -88,7 +88,10 @@ class Localization
     "unlock_cards" => 50,
     "unlock_card" => 51,
     "locked_chest" => 52,
-    "dispenser_out" => 53
+    "dispenser_out" => 53,
+    "mission3" => 54,
+    "game100" => 55,
+    "cannot_save" => 56
   }
 
   VOCABS_INDEXES = {
@@ -108,12 +111,14 @@ class Localization
     "accept" => 14,
     "refuse" => 15,
     "shutdown" => 16,
-    
+
     "to_title" => 18,
     "save" => 19,
     "item" => 20,
     "equipment" => 21,
     "attack" => 22,
+    "shop_m" => 23,
+    "shop_f" => 24,
     
     "obtain" => 26,
     
@@ -451,6 +456,24 @@ class Localization
     @messages.push("\\>            #{name} | #{attack_text}: \\c[3]#{atk}\\c[0].")
 
     $msg_params = ["transparent", "bottom"]
+    set_msg_vars
+  end
+
+  def set_shop_stats(index, var_id, genre)
+    reset_msg_vars
+
+    item = $data_items[index]
+    name = item.name
+    name_plural = get_plural(item)
+    $game_variables[165] = name_plural
+    possession_text = get_text("possession")
+    shop_text = get_text("shop_#{genre}")
+    value = $game_variables[var_id]
+
+    @messages.push("\\>\\G\\c[18]#{name_plural}:\\c[0] #{value} #{possession_text}.")
+    @messages.push(shop_text)
+
+    $msg_params = ["transparent", "middle"]
     set_msg_vars
   end
 
