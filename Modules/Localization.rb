@@ -91,7 +91,8 @@ class Localization
     "dispenser_out" => 53,
     "mission3" => 54,
     "game100" => 55,
-    "cannot_save" => 56
+    "cannot_save" => 56,
+    "locked_door" => 57,
   }
 
   VOCABS_INDEXES = {

@@ -39,7 +39,7 @@ class Utils
   def self.check_variable(id)
     case id
     when 33 #Figurine
-      if !$game_switches[493] && $game_switches[494] $game_variables[33] == 60
+      if !$game_switches[493] && $game_switches[494] && $game_variables[33] == 60
         $data_common_events[89] #60 figurine?
       end
     when 36 #Gruppo
