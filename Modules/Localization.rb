@@ -92,7 +92,7 @@ class Localization
     "mission3" => 54,
     "game100" => 55,
     "cannot_save" => 56,
-    "locked_door" => 57,
+    "locked_door" => 57
   }
 
   VOCABS_INDEXES = {
@@ -120,18 +120,19 @@ class Localization
     "attack" => 22,
     "shop_m" => 23,
     "shop_f" => 24,
-    
+    "teleport_to" => 25,
     "obtain" => 26,
     
     "quit" => 34,
     
     "lose" => 39,
-    "use_item" => 40,
+    "yes" => 40,
+    "no" => 41,
     
     "find" => 44,
     "gave" => 45,
     "got" => 46,
-    
+    "act" => 47,
     "saggioviola" => 48,
     "the-m" => 49,
     "the-f" => 50,
@@ -149,23 +150,23 @@ class Localization
 
   MAPS_INDEXES = {
     "Royal Gardens" => 1,
-    "Castle Grounds" => 2,
-    "Lost Valley" => 3,
-    "Kings Castle" => 4,
-    "Throne Room" => 5,
-    "Deserted Lands" => 6,
-    "Arena" => 7,
-    "Laboratory" => 8,
-    "Shelter" => 9,
+    "Lost Valley" => 2,
+    "Deserted Lands" => 3,
+    "Abandoned Area" => 4,
+    "Seabed" => 5,
+    "Forbidden Jungle" => 6,
+    "Fire Kingdom" => 7,
+    "Secret Laboratory" => 8,
+    "Final Act" => 9,
     "Dead Valley" => 10,
-    "Seabed" => 11,
+    "Shelter" => 11,
     "The Great Cluster" => 12,
-    "Fire Kingdom" => 13,
-    "Forbidden Jungle" => 14,
-    "Secret Laboratory" => 15,
-    "Final Act" => 16,
+    "Castle Grounds" => 13,
+    "Kings Castle" => 14,
+    "Throne Room" => 15,
+    "Arena" => 16,
     "Finalboss" => 17,
-    "Abandoned Area" => 18
+    "Laboratory" => 18,
   }
 
   DB_INDEXES = {
@@ -280,6 +281,13 @@ class Localization
     return @msg_block
   end
 
+  def get_map_name_by_index(index)
+    line_data = index != nil ? $map_names_data[index] : name
+    split_data(line_data, false)
+
+    return @msg_block
+  end
+
   def get_text(name)
     index = VOCABS_INDEXES[name]
     line_data = index != nil ? $vocabs_data[index] : name
@@ -384,6 +392,24 @@ class Localization
 
     @messages.push("\\g")
     $msg_params = ["transparent", "middle"]
+    set_msg_vars
+  end
+
+  def set_teleport_to(index)
+    reset_msg_vars
+
+    text = get_text("teleport_to")
+    @messages.push(text)
+
+    text = get_text("act")
+    @messages.push("\\>\\c[1]#{text} #{index}:\\c[0] #{get_map_name_by_index(index - 1)}?")
+
+    text = get_text("yes")
+    @messages.push(text)
+
+    text = get_text("no")
+    @messages.push(text)
+
     set_msg_vars
   end
 
