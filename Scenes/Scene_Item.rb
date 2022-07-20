@@ -19,7 +19,7 @@ class Scene_Item < Scene_Base
     @item_window.help_window = @help_window
     @item_window.active = false
     @target_window = Window_MenuStatus.new(0, 0)
-    @gold_window = Window_Gold.new(0, 360)
+    @gold_window = Window_Gold.new(384, 360)
     hide_target_window
   end
   #--------------------------------------------------------------------------
