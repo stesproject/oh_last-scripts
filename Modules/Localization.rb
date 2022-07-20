@@ -134,7 +134,7 @@ class Localization
     "gave" => 45,
     "got" => 46,
     "act" => 47,
-    "saggioviola" => 48,
+    "finalboss" => 48,
     "the-m" => 49,
     "the-f" => 50,
     "the-m-pl" => 51,
