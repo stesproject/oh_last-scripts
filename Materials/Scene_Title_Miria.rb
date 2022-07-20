@@ -80,9 +80,11 @@ module Cache
   end
 end
 
-class Window_TitleText < Window_Base
-  def initialize
+class Window_ScreenText < Window_Base
+  attr_accessor :text
+  def initialize(text)
     super(-12, 374, 544, 64)
+    @text = text
     refresh
   end
   def refresh
@@ -91,7 +93,7 @@ class Window_TitleText < Window_Base
     self.contents.font.italic = false
     self.contents.font.shadow = false
     self.contents.font.color.alpha = 164
-    self.contents.draw_text(0, 0, 544, 32, "#{MOG_VX01::GAME_VERSION}")
+    self.contents.draw_text(0, 0, 544, 32, @text)
   end
 end
 
@@ -470,7 +472,7 @@ include  MOG_VX01
   end
 
   def draw_version_text
-    @text_window = Window_TitleText.new
+    @text_window = Window_ScreenText.new(MOG_VX01::GAME_VERSION)
     @text_window.back_opacity = 0
     @text_window.opacity = 0
   end

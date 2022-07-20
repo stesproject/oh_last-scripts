@@ -81,6 +81,9 @@ class Scene_Map < Scene_Base
       update_basic
     end
     Graphics.brightness = 255
+
+    # Add by Ste
+    draw_map_id if $TEST
   end
   #--------------------------------------------------------------------------
   # * Fade Out Screen
@@ -94,6 +97,10 @@ class Scene_Map < Scene_Base
       update_basic
     end
     Graphics.brightness = 0
+
+    # Add by Ste
+    @text_window.dispose if @text_window != nil
+    @text_window = nil
   end
   #--------------------------------------------------------------------------
   # * Player Transfer  Processing
@@ -268,5 +275,14 @@ class Scene_Map < Scene_Base
   def perform_battle_transition
     Graphics.transition(80, "Graphics/System/BattleStart", 80)
     Graphics.freeze
+  end
+
+  #--------------------------------------------------------------------------
+  # * Show Map Id (Add by Ste)
+  #--------------------------------------------------------------------------
+  def draw_map_id
+    @text_window = Window_ScreenText.new($game_map.map_id)
+    @text_window.back_opacity = 0
+    @text_window.opacity = 0
   end
 end

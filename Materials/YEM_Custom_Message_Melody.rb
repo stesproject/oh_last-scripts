@@ -105,7 +105,7 @@ module YEM
     
     # This adjusts the pixel width given to your icons so they won't throw
     # certain monospaced fonts out of alignment.
-    ICON_WIDTH = 36
+    ICON_WIDTH = 24
     
     # This adjusts how many rows are shown on screen. If it's 0 or under, a
     # maximum of 4 rows will be shown. If it's above, it will show that many

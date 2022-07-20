@@ -92,7 +92,8 @@ class Localization
     "mission3" => 54,
     "game100" => 55,
     "cannot_save" => 56,
-    "locked_door" => 57
+    "locked_door" => 57,
+    "buy-cancel" => 58,
   }
 
   VOCABS_INDEXES = {
@@ -355,7 +356,7 @@ class Localization
 
       icon = ""
       if show_icon
-        icon = "\\i[#{item.icon_index}]"
+        icon = "\\i[#{item.icon_index}] "
       end
 
       amount = value > 0 ? value.to_s + " " : value < 0 ? "#{get_text("a-lot")} " : ""
