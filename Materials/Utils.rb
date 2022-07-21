@@ -31,7 +31,7 @@ class Utils
     case id
     when 497 #distributore esaurito
       if !$game_switches[499]
-        $data_common_events[91] #Trofeo distributore esaurito
+        $game_temp.common_event_id = 91 #Trofeo distributore esaurito
       end
     end
   end
@@ -40,16 +40,21 @@ class Utils
     case id
     when 33 #Figurine
       if !$game_switches[493] && $game_switches[494] && $game_variables[33] == 60
-        $data_common_events[89] #60 figurine?
+        $game_temp.common_event_id = 89 #60 figurine?
       end
     when 36 #Gruppo
       if $game_switches[195] && $game_variables[36] == 3
-        $data_common_events[35] #Spiega Grin
+        $game_temp.common_event_id = 35 #Spiega Grin
       end
     when 71 #tor totali
       if $game_switches[270] && !$game_switches[271] && $game_variables[71] == 3
-        $data_common_events[45] #Torrette
+        $game_temp.common_event_id = 45 #Torrette
       end
     end
   end
+
+  def self.check_start()
+    $game_temp.common_event_id = 8 #Set picture HUD Q sword
+  end
+
 end

@@ -13,6 +13,7 @@ class Scene_Map < Scene_Base
     $game_map.refresh
     @spriteset = Spriteset_Map.new
     @message_window = Window_Message.new
+    Utils.check_start
   end
   #--------------------------------------------------------------------------
   # * Execute Transition
