@@ -123,6 +123,12 @@ class Localization
     "shop_f" => 24,
     "teleport_to" => 25,
     "obtain" => 26,
+    "stat_1" => 27,
+    "stat_2" => 28,
+    "stat_3" => 29,
+    "stat_4" => 30,
+    "stat_5" => 31,
+    "stat_6" => 32,
     
     "quit" => 34,
     

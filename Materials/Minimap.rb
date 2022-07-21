@@ -41,7 +41,7 @@ module MiniMap
   # Here you may specify the X and Y coordinates as well as the width and height
   # of the MiniMap. 
   # Format:             X Coordinate    Y Coordinate     Width      Height
-  MAP_RECT = Rect.new(          382,            2,       160,       120)
+  MAP_RECT = Rect.new(          408,            0,       136,       104)
   
   #                         ◆ Map Z Coordinate ◆
   # Here you my specify the map's Z coordinate (depth).

@@ -80,6 +80,10 @@ class Window_CrissaegrimHud < Window_Base
         self.contents.draw_text(610, 355, 24, 28, $game_party.item_number($data_items[Crissaegrim_ABS::Distance_Weapons[@actor.weapon_id][6]]),1)
       end
     end
+    # Add by Ste
+    if @actor.weapon_id
+      show_icon($data_weapons[@actor.weapon_id], 142, 2)
+    end
   end
   def show_state(actor, x, y)
     count = 0
