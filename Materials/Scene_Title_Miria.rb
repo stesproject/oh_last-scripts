@@ -31,7 +31,7 @@ FULL_SCREEN = false
 TT = 60
 # Fade in speed.
 FADE_IN_SPEED = 8
-FADE_OUT_SPEED = 3
+FADE_OUT_SPEED = 8
 #Ativar movimento de Onda no texto do titulo.
 # (true = Ativar ou false = Desativar) 
 TWAVE = false
@@ -400,7 +400,7 @@ include  MOG_VX01
   def command_continue
     if @continue_enabled
       Sound.play_decision
-      title_fade
+      # title_fade
       $scene = Scene_File.new(false, true, false)
     else
       Sound.play_buzzer

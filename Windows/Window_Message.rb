@@ -396,7 +396,12 @@ class Window_Message < Window_Selectable
   # * Number Input Processing
   #--------------------------------------------------------------------------
   def input_number
-    if Input.trigger?(Input::C)
+    if Input.trigger?(Input::B)
+      Sound.play_cancel
+      $game_variables[$game_message.num_input_variable_id] = 0
+      $game_map.need_refresh = true
+      terminate_message
+    elsif Input.trigger?(Input::C)
       Sound.play_decision
       $game_variables[$game_message.num_input_variable_id] =
         @number_input_window.number

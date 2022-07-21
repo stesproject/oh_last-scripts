@@ -129,7 +129,7 @@ class Localization
     "stat_4" => 30,
     "stat_5" => 31,
     "stat_6" => 32,
-    
+    "dispenser_of" => 33,
     "quit" => 34,
     
     "lose" => 39,
@@ -496,15 +496,26 @@ class Localization
   def set_shop_stats(index, var_id, genre)
     reset_msg_vars
 
+    colors = {
+      "1" => "2",
+      "5" => "12",
+      "6" => "10",
+      "7" => "28",
+      "27" => "0",
+    }
+
     item = $data_items[index]
     name = item.name
     name_plural = get_plural(item)
     $game_variables[165] = name_plural
     possession_text = get_text("possession")
     shop_text = get_text("shop_#{genre}")
+    dispenser_of_text = get_text("dispenser_of")
     value = $game_variables[var_id]
+    color = "\\c[#{colors[index.to_s]}]"
 
-    @messages.push("\\>\\G\\c[18]#{name_plural}:\\c[0] #{value} #{possession_text}.")
+    @messages.push("\\>\\fi#{color}#{dispenser_of_text}")
+    @messages.push("\\>\\G\\c[18]#{name_plural}:\\c[0] #{value} #{possession_text}\\fb")
     @messages.push(shop_text)
 
     $msg_params = ["transparent", "middle"]
