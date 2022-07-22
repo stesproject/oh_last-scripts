@@ -106,6 +106,8 @@ class Localization
     "mission10" => 68,
     "mission11" => 69,
     "mission12" => 70,
+    "e_mission_ok" => 71,
+    "e_mission_ko" => 72,
   }
 
   VOCABS_INDEXES = {
@@ -147,7 +149,8 @@ class Localization
     "lose" => 39,
     "yes" => 40,
     "no" => 41,
-    
+    "item-assigned" => 42,
+    "skill-assigned" => 43,
     "find" => 44,
     "gave" => 45,
     "got" => 46,

@@ -1783,7 +1783,7 @@ class Window_Skill < Window_Selectable
     if $skill_lock_description <= 0
       @help_window.set_text(skill == nil ? "" : skill.description)
     else
-      @help_window.set_text(skill == nil ? "" : "Skill Memorizada!")
+      @help_window.set_text(skill == nil ? "" : $local.get_text("skill-assigned"))
     end
   end
 end
@@ -1836,7 +1836,7 @@ class Window_Item < Window_Selectable
     if $item_lock_description <= 0
     @help_window.set_text(item == nil ? "" : item.description)
   else
-    @help_window.set_text(item == nil ? "" : "Item assigned!")
+    @help_window.set_text(item == nil ? "" : $local.get_text("item-assigned"))
   end
 end
 end

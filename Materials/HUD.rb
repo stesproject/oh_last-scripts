@@ -11,6 +11,8 @@ MP_Bar = "MP-Bar" # Imagem da barra de MP
 
 Base = "Bars-Base" # Imagm do fundo das barras
 
+Q_Bar = "Q-Bar" # Add by Ste
+
 OnOff_Hud_Switch = 40 # Switch que ativa / desativa a HUD
 
 Show_Hide_Button = Input::Fkeys[12] # Tecla que mostra / esconde a HUD
@@ -59,7 +61,8 @@ class Window_CrissaegrimHud < Window_Base
   def refresh
     draw_hp(@actor, 0, 0)
     draw_mp(@actor, 0, 40)
-    show_state(@actor, 130, 0)
+    # draw_q(@actor, 145, 13) if $game_variables[36] == 0 #Gruppo / Add by Ste
+    # show_state(@actor, 130, 0)
     if Crissaegrim_ABS::Distance_Weapons.has_key?(@actor.weapon_id)
       if Crissaegrim_ABS::Distance_Weapons[@actor.weapon_id][5] > 0
         show_icon($data_items[Crissaegrim_ABS::Distance_Weapons[@actor.weapon_id][5]], 128, 3)
@@ -118,6 +121,13 @@ class Window_CrissaegrimHud < Window_Base
     self.contents.blt(x, y, meter, src_rect)
     back = Cache.system(Crissaegrim_Hud::Base)    
     cw = back.width
+    ch = back.height
+    src_rect = Rect.new(0, 0, cw, ch)    
+    self.contents.blt(x, y, back, src_rect)
+  end
+  def draw_q(actor, x, y)
+    back = Cache.system(Crissaegrim_Hud::Q_Bar) # Add by Ste
+    cw = actor.weapon_id ? back.width : 14
     ch = back.height
     src_rect = Rect.new(0, 0, cw, ch)    
     self.contents.blt(x, y, back, src_rect)
