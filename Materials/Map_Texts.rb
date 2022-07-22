@@ -1,9 +1,10 @@
 #==============================================================================
 # MapTexts script
 # Author: Ste
-# Version: 1.1
-# Date: 25-06-2022
+# Version: 2.0
+# Date: 22-07-2022
 # Change Log:
+#     - Add convert_special_characters method
 #     - Add font size and alignment parameters
 #==============================================================================
 
@@ -75,6 +76,7 @@ class Window_MapTexts < Window_Base
     self.contents.font.color = normal_color
     self.contents.font.italic = false
     @align = align
+    @text = nil 
     @texts = texts
     @lh = lh
   end
@@ -86,7 +88,9 @@ class Window_MapTexts < Window_Base
     self.contents.clear
     lh = @lh
     @texts.each do |text|
-      self.contents.draw_text(0,0,504,lh,text,@align)
+      @text = text
+      convert_special_characters
+      self.contents.draw_text(0, 0, 504, lh, @text, @align)
       lh += @lh
     end
   end
@@ -97,5 +101,17 @@ class Window_MapTexts < Window_Base
     @texts = texts
     @lh = lh
     refresh
+  end
+  #--------------------------------------------------------------------------
+  # * Convert Special Characters
+  #--------------------------------------------------------------------------
+  def convert_special_characters
+    # @text.gsub!(/\\V\[([0-9]+)\]/i) { $game_variables[$1.to_i] }
+    # @text.gsub!(/\\V\[([0-9]+)\]/i) { $game_variables[$1.to_i] }
+    # @text.gsub!(/\\N\[([0-9]+)\]/i) { $game_actors[$1.to_i].name }
+    @text.gsub!(/\\C\[([0-9]+)\]/i) { 
+      self.contents.font.color = text_color($1.to_i)
+      @text.sub!(/\\C\[([0-9]+)\]/, "")
+     }
   end
 end

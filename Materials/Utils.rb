@@ -57,4 +57,51 @@ class Utils
     $game_temp.common_event_id = 8 #Set picture HUD Q sword
   end
 
+  def self.get_missions_list()
+    missions_switches1 = [70, 70, 350, 162, 189, 263]
+    missions_switches2 = [334, 368, 389, 423, 445, 514]
+    last_mission_switch = 495
+    all_missions = missions_switches1.dup
+    all_missions.concat(missions_switches2)
+
+    @last_mission_index = $game_switches[last_mission_switch] ? 100 : 1
+    all_missions.each_with_index do |id, index|
+      if $game_switches[id]
+        @last_mission_index += 1
+      end
+    end
+
+    @missions_list = []
+
+    def self.add_text(key)
+      $local.set_common_msg(key)
+      msg = $local.get_msg_vars
+      msg[0] = @missions_list.size == @last_mission_index ? "\\c[0]#{msg[0]}" : "\\c[1]#{msg[0]}"
+      msg.each {|t| @missions_list.push(t) if !t.empty? }
+    end
+
+    missions_switches1.each_with_index do |id, index|
+      if $game_switches[id]
+        key = "mission#{index + 1}"
+        add_text(key)
+      end
+    end
+
+    if $game_switches[316]
+      if !$game_switches[334]
+        key = "mission8" #Fire Kingdom
+        add_text(key)
+      end
+    end
+
+    missions_switches2.each_with_index do |id, index|
+      if $game_switches[id]
+        key = "mission#{index + missions_switches1.size + 1}"
+        add_text(key)
+      end
+    end
+
+    return @missions_list
+  end
+
 end
