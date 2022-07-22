@@ -409,7 +409,7 @@ class Localization
 
       amount = value > 0 ? value.to_s + " " : ""
 
-      @messages.push("\\>                                      +#{amount} #{name} #{icon}")
+      @messages.push("\\>                              +#{amount} #{name} #{icon}")
     end
 
     @messages.push("\\g")
