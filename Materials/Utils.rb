@@ -64,7 +64,7 @@ class Utils
     all_missions = missions_switches1.dup
     all_missions.concat(missions_switches2)
 
-    @last_mission_index = $game_switches[last_mission_switch] ? 100 : 1
+    @last_mission_index = $game_switches[last_mission_switch] ? 100 : 0
     all_missions.each_with_index do |id, index|
       if $game_switches[id]
         @last_mission_index += 1
@@ -72,11 +72,13 @@ class Utils
     end
 
     @missions_list = []
+    @mission_index = 0
 
     def self.add_text(key)
+      @mission_index += 1
       $local.set_common_msg(key)
       msg = $local.get_msg_vars
-      msg[0] = @missions_list.size == @last_mission_index ? "\\c[0]#{msg[0]}" : "\\c[1]#{msg[0]}"
+      msg[0] = @mission_index ==  @last_mission_index ? "\\c[0]#{msg[0]}" : "\\c[1]#{msg[0]}"
       msg.each {|t| @missions_list.push(t) if !t.empty? }
     end
 
