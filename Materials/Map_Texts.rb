@@ -112,6 +112,6 @@ class Window_MapTexts < Window_Base
     @text.gsub!(/\\C\[([0-9]+)\]/i) { 
       self.contents.font.color = text_color($1.to_i)
       @text.sub!(/\\C\[([0-9]+)\]/, "")
-     }
+    }
   end
 end

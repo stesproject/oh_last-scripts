@@ -46,6 +46,8 @@ class Utils
       if $game_switches[195] && $game_variables[36] == 3
         $game_temp.common_event_id = 35 #Spiega Grin
       end
+    when 59 #Mission 2 (energies)
+      $game_temp.common_event_id = 41 #Check mission 2
     when 71 #tor totali
       if $game_switches[270] && !$game_switches[271] && $game_variables[71] == 3
         $game_temp.common_event_id = 45 #Torrette
