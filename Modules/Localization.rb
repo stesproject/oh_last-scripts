@@ -435,65 +435,6 @@ class Localization
     set_msg_vars
   end
 
-  #TODO: not used
-  def set_act_completed(index)
-    reset_msg_vars
-
-    text = "\\delay[3]" # Set letter x letter delay
-    text += get_text("act")
-    text += "\\.\\."
-
-    case index
-    when 1
-      text += " #{get_text("the-f")} "
-      text += get_map_name("Green Forest")
-
-    when 2
-      text += " #{get_text("the-m-pl")} "
-      text += get_map_name("Castle Dungeons")
-
-    when 3
-      text += " #{get_text("the-f-pl")} "
-      text += get_map_name("Rocky Mountains")
-
-    when 4
-      text += " #{get_text("the-f")} "
-      text += get_map_name("Dead Valley")
-
-    when 5
-      text += " #{get_text("the-f-pl")} "
-      text += get_map_name("Abyssal Waterfalls")
-
-    when 6
-      text += " #{get_text("the-m")} "
-      text += get_map_name("Cyberspace")
-
-    when 7
-      text += " #{get_text("the-f")} "
-      text += get_map_name("Kingdom Outskirts")
-
-    when 8
-      text += " #{get_text("the-f-pl")} "
-      text += get_map_name("Ancient Ruins")
-
-    when 9
-      text += " #{get_text("the-f")} "
-      text += get_map_name("Final Battle")
-
-    end
-
-    text += "\\.\\."
-    @messages.push(text)
-
-    text = get_text("act-completed")
-    text += "\\RED" # Reset letter x letter delay
-    @messages.push(text)
-
-    $msg_params = ["transparent", "middle"]
-
-    set_msg_vars
-  end
-
   def set_weapon_stats(index)
     reset_msg_vars
 

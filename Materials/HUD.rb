@@ -85,7 +85,7 @@ class Window_CrissaegrimHud < Window_Base
     end
     # Add by Ste
     if @actor.weapon_id
-      show_icon($data_weapons[@actor.weapon_id], 142, 2)
+      show_icon($data_weapons[@actor.weapon_id], 142, 2) if $game_variables[36] == 0
     end
   end
   def show_state(actor, x, y)
@@ -144,6 +144,8 @@ class Scene_Map
     if Crissaegrim_Hud::Background != ""
       @bg = Sprite.new
       @bg.bitmap = Cache.system(Crissaegrim_Hud::Background)
+      @bg.visible = true if Crissaegrim_Hud::Background != ""
+      @bg.z = 100
     end
     @hud = Window_CrissaegrimHud.new
     showing_hud
