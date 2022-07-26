@@ -229,6 +229,12 @@ class Localization
     "Rifle TC" => 35,
     "ESP" => 36,
     "Dindini" => 37,
+    "ourhero" => 38,
+    "tay" => 39,
+    "fury" => 40,
+    "grin" => 41,
+    "sage" => 42,
+    "finalboss" => 43,
   }
 
   class ItemText
@@ -290,7 +296,7 @@ class Localization
     split_data(line_data)
 
     text.name = @messages[0]
-    text.desc = "#{@messages[1]}§#{@messages[2]}§#{@messages[3]}"
+    text.desc = @messages[1]
 
     return text
   end
@@ -475,19 +481,6 @@ class Localization
     @messages.push(shop_text)
 
     $msg_params = ["transparent", "middle"]
-    set_msg_vars
-  end
-
-  #TODO: not used
-  def set_item_details(item_name, n)
-    reset_msg_vars
-
-    msg = "\\lbl#{item_name.upcase}: #{n} #{get_text("possession")}.\\lbl"
-
-    @messages.push(msg)
-    @messages.push(get_text("use_item"))
-    @messages.push(get_text("cancel"))
-
     set_msg_vars
   end
 

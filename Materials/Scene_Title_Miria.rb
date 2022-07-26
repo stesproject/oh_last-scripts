@@ -131,6 +131,7 @@ include  MOG_VX01
     localize_items($data_items)
     localize_items($data_weapons)
     localize_items($data_armors)
+    localize_items($data_actors)
   end
 
   def start
@@ -447,10 +448,12 @@ include  MOG_VX01
   def localize_items(items)
     for i in 1...items.size
       item_name = items[i].name
-      item_description = items[i].description
+      item_description = items[i].respond_to?(:description) ? items[i].description : ""
       item = $local.get_db_object(item_name)
       items[i].name = item.name
-      items[i].description = item.desc
+      if item.respond_to?(:description)
+        items[i].description = item.desc
+      end
     end
   end
 
