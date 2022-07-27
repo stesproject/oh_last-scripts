@@ -145,7 +145,7 @@ class Scene_Map
       @bg = Sprite.new
       @bg.bitmap = Cache.system(Crissaegrim_Hud::Background)
       @bg.visible = true if Crissaegrim_Hud::Background != ""
-      @bg.z = 100
+      @bg.z = 49
     end
     @hud = Window_CrissaegrimHud.new
     showing_hud

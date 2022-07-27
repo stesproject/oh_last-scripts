@@ -22,7 +22,7 @@ class Game_Character
   attr_reader   :direction                # direction
   attr_reader   :pattern                  # pattern
   attr_reader   :move_route_forcing       # forced move route flag
-  attr_reader   :priority_type            # priority type
+  attr_accessor :priority_type            # priority type
   attr_reader   :through                  # pass-through
   attr_reader   :bush_depth               # bush depth
   attr_accessor :animation_id             # animation ID
