@@ -108,4 +108,30 @@ class Utils
     return @missions_list
   end
 
+  def self.get_stats()
+    stats_list = []
+
+    color = $game_switches[495] ? "\\c[1]" : "\\c[0]"
+
+    text = $local.get_text("stat_1")
+    stats_list.push("#{color}#{text} \\v[54]%")
+
+    text = $local.get_text("stat_2")
+    stats_list.push("#{color}#{text} \\v[33]/60")
+
+    text = $local.get_text("stat_3")
+    stats_list.push("#{color}#{text} \\v[67]/8")
+
+    text = $local.get_text("stat_4")
+    stats_list.push("\\c[0]#{text} \\v[1]")
+
+    text = $local.get_text("stat_5")
+    stats_list.push("#{text} \\v[35]")
+
+    text = $local.get_text("stat_6")
+    stats_list.push("#{text} \\v[34]")
+
+    return stats_list
+  end
+
 end

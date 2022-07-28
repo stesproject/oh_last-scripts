@@ -681,6 +681,9 @@ class Game_Player < Game_Character
     if Input.trigger?(Crissaegrim_ABS::Right_Attack_Button) and @deffending == false
       @attack_weapon = @actor.weapon_id
       anime_hero_attack if @anime_attack_time <= 0
+      if $game_switches[69]
+        return
+      end
       if Crissaegrim_ABS::Distance_Weapons.has_key?(@attack_weapon) and @attack_weapon != 0 and @right_attack_time <= 0
         @right_attack = true
         @left_attack = false

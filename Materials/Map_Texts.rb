@@ -106,8 +106,7 @@ class Window_MapTexts < Window_Base
   # * Convert Special Characters
   #--------------------------------------------------------------------------
   def convert_special_characters
-    # @text.gsub!(/\\V\[([0-9]+)\]/i) { $game_variables[$1.to_i] }
-    # @text.gsub!(/\\V\[([0-9]+)\]/i) { $game_variables[$1.to_i] }
+    @text.gsub!(/\\V\[([0-9]+)\]/i) { $game_variables[$1.to_i] }
     # @text.gsub!(/\\N\[([0-9]+)\]/i) { $game_actors[$1.to_i].name }
     @text.gsub!(/\\C\[([0-9]+)\]/i) { 
       self.contents.font.color = text_color($1.to_i)

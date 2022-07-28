@@ -7,6 +7,7 @@ class Vars_Initialization
     $game_switches[11] = true #save mappa
     $game_switches[12] = true #save vittoria
     $game_switches[13] = true #save menu
+    $game_switches[217] = false #quit game
 
     # Debug
     $game_switches[556] = $TEST && true #attack-up
