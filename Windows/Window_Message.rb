@@ -397,7 +397,7 @@ class Window_Message < Window_Selectable
   #--------------------------------------------------------------------------
   def input_number
     if Input.trigger?(Input::B)
-      Sound.play_cancel
+      # Sound.play_cancel
       $game_variables[$game_message.num_input_variable_id] = 0
       $game_map.need_refresh = true
       terminate_message
