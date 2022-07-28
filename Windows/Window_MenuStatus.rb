@@ -27,11 +27,12 @@ class Window_MenuStatus < Window_Selectable
       x = 104
       y = actor.index * 96 + WLH / 2
       draw_actor_name(actor, x, y)
-      draw_actor_class(actor, x + 120, y)
-      draw_actor_level(actor, x, y + WLH * 1)
-      draw_actor_state(actor, x, y + WLH * 2)
-      draw_actor_hp(actor, x + 120, y + WLH * 1)
-      draw_actor_mp(actor, x + 120, y + WLH * 2)
+      # draw_actor_class(actor, x + 120, y)
+      # draw_actor_level(actor, x, y + WLH * 1)
+      # draw_actor_state(actor, x, y + WLH * 2)
+      # draw_actor_hp(actor, x + 120, y + WLH * 1)
+      draw_actor_hp(actor, x + 120, y + 6) # Add by Ste
+      # draw_actor_mp(actor, x + 120, y + WLH * 2)
     end
   end
   #--------------------------------------------------------------------------

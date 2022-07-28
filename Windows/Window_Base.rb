@@ -242,7 +242,7 @@ class Window_Base < Window
   #--------------------------------------------------------------------------
   def draw_actor_name(actor, x, y)
     self.contents.font.color = hp_color(actor)
-    self.contents.draw_text(x, y, 108, WLH, actor.name)
+    self.contents.draw_text(x, y, 108, WLH, $local.get_text(actor.name))
   end
   #--------------------------------------------------------------------------
   # * Draw Class

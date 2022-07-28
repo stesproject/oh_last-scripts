@@ -131,7 +131,6 @@ include  MOG_VX01
     localize_items($data_items)
     localize_items($data_weapons)
     localize_items($data_armors)
-    localize_items($data_actors)
   end
 
   def start

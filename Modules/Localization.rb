@@ -230,12 +230,6 @@ class Localization
     "Rifle TC" => 35,
     "ESP" => 36,
     "Dindini" => 37,
-    "ourhero" => 38,
-    "tay" => 39,
-    "fury" => 40,
-    "grin" => 41,
-    "sage" => 42,
-    "finalboss" => 43,
   }
 
   class ItemText
@@ -296,8 +290,8 @@ class Localization
     reset_msg_vars
     split_data(line_data)
 
-    text.name = @messages[0]
-    text.desc = @messages[1]
+    text.name = @messages.size > 0 ? @messages[0] : line_data
+    text.desc = @messages.size > 1 ? @messages[1] : ""
 
     return text
   end

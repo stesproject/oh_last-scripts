@@ -10,8 +10,8 @@ class Vars_Initialization
     $game_switches[217] = false #quit game
 
     # Debug
-    $game_switches[556] = $TEST && true #attack-up
-    $game_switches[557] = $TEST && true #speed-up
+    $game_switches[556] = $TEST && false #attack-up
+    $game_switches[557] = $TEST && false #speed-up
     $game_switches[558] = $TEST && false #skip-wait
   end
 end
