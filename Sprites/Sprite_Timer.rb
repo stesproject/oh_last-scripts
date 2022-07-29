@@ -18,12 +18,7 @@ class Sprite_Timer < Sprite
   def initialize(viewport)
     super(viewport)
     self.bitmap = Bitmap.new(88, 48)
-    if $game_switches[0026] == true 
-    self.bitmap.font.name = "Arial"
-  end
-    if $game_switches[0026] == false
-    self.bitmap.font.name = nil 
-  end
+    self.bitmap.font.name = $game_switches[26] ? "Arial" : nil
     self.bitmap.font.size = 32
     self.x = 544 - self.bitmap.width
     self.y = 0
