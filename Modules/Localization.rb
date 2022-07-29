@@ -501,11 +501,6 @@ class Localization
   end
 
   def convert_special_characters
-    # Woratana's :: Weapon Name
-    # @msg_block = @msg_block.gsub(/\\NW\[([0-9]+)\]/i) { $data_weapons[$1.to_i].name }
-    # Woratana's :: Item Name
-    # @msg_block = @msg_block.gsub(/\\NI\[([0-9]+)\]/i) { $data_items[$1.to_i].name}
-
     # Character Name
     @msg_block = @msg_block.gsub(/\\N\[([0-9]+)\]/i) { get_text($game_actors[$1.to_i].name) }
     # Ste's :: Map Name
