@@ -694,7 +694,8 @@ class Game_Player < Game_Character
         if $game_party.has_item?($data_items[Crissaegrim_ABS::Distance_Weapons[@attack_weapon][5]])
           Audio.se_play("Audio/SE/"+Crissaegrim_ABS::Weapon_Shot_SE[@attack_weapon],80,100) if Crissaegrim_ABS::Weapon_Shot_SE[@attack_weapon] != nil and Crissaegrim_ABS::Weapon_Shot_SE[@attack_weapon] != ""
         else
-          Sound.play_buzzer
+          Audio.se_play("Audio/SE/Blow2", 80, 75)
+          # Sound.play_buzzer
         end
       else
         normal_attack_right

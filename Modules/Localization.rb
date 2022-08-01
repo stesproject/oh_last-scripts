@@ -305,7 +305,7 @@ class Localization
   end
 
   def get_map_name_by_index(index)
-    line_data = index != nil ? $map_names_data[index] : name
+    line_data = index != nil ? $map_names_data[index + 1] : name
     split_data(line_data, false)
 
     return @msg_block
@@ -351,7 +351,7 @@ class Localization
     line_data = $common_data[index]
     set_row_max_length(line_data.include?('\f[') ? -FACE_ROW_LENGTH_OFFSET : 0)
     split_data(line_data)
-    set_row_max_length(line_data.include?('\f[') ? -FACE_ROW_LENGTH_OFFSET : 0)
+    set_row_max_length(line_data.include?('\f[') ? FACE_ROW_LENGTH_OFFSET : 0)
 
     if messages_exceed_max?
       p "Messages are over the limit! (#{@messages.size}/#{MESSAGES_MAX})"
@@ -463,7 +463,7 @@ class Localization
 
     item = $data_items[index]
     name = item.name
-    name_plural = get_plural(item)
+    name_plural = get_plural(item) ? get_plural(item) : name
     $game_variables[165] = name_plural
     possession_text = get_text("possession")
     shop_text = get_text("shop_#{genre}")
