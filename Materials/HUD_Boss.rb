@@ -35,6 +35,7 @@ end
 class Boss_HUD < Sprite
   def initialize(id)
     @enemy = $game_map.events[id]
+    $current_boss = @enemy.enemy_called
     super()
     self.bitmap = Bitmap.new(544,416)
   end

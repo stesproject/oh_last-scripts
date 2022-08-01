@@ -292,7 +292,12 @@ class Game_Battler
   # * Recover All
   #--------------------------------------------------------------------------
   def recover_all
-    @hp = maxhp
+    if $game_variables[170] > 0
+      @hp = $game_variables[170]
+      $game_variables[170] = 0
+    elsif
+      @hp = maxhp
+    end
     @mp = maxmp
     for i in @states.clone do remove_state(i) end
   end
