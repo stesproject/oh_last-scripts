@@ -10,6 +10,7 @@ class Scene_Shop < Scene_Base
   #--------------------------------------------------------------------------
   def start
     super
+    $game_system.skin = 'Window3'
     create_menu_background
     create_command_window
     @help_window = Window_Help.new
@@ -34,6 +35,7 @@ class Scene_Shop < Scene_Base
   #--------------------------------------------------------------------------
   def terminate
     super
+    $game_system.skin = 'Window'
     dispose_menu_background
     dispose_command_window
     @help_window.dispose
@@ -72,14 +74,14 @@ class Scene_Shop < Scene_Base
   # * Create Command Window
   #--------------------------------------------------------------------------
   def create_command_window
-    s1 = Vocab::ShopBuy
-    s2 = Vocab::ShopSell
-    s3 = Vocab::ShopCancel
-    @command_window = Window_Command.new(384, [s1, s2, s3], 3)
+    s1 = $local.get_text("shop_buy")
+    s2 = $local.get_text("shop_sell")
+    s3 = $local.get_text("shop_cancel")
+    @command_window = Window_Command.new(384, [s1, s3], 2)
     @command_window.y = 56
-    if $game_temp.shop_purchase_only
-      @command_window.draw_item(1, false)
-    end
+    # if $game_temp.shop_purchase_only
+    #   @command_window.draw_item(1, false)
+    # end
   end
   #--------------------------------------------------------------------------
   # * Dispose of Command Window
@@ -104,7 +106,7 @@ class Scene_Shop < Scene_Base
         @buy_window.visible = true
         @buy_window.refresh
         @status_window.visible = true
-      when 1  # sell
+      when 2  # sell
         if $game_temp.shop_purchase_only
           Sound.play_buzzer
         else
@@ -115,7 +117,7 @@ class Scene_Shop < Scene_Base
           @sell_window.visible = true
           @sell_window.refresh
         end
-      when 2  # Quit
+      when 1  # Quit
         Sound.play_decision
         $scene = Scene_Map.new
       end

@@ -24,7 +24,7 @@ class Window_ShopStatus < Window_Base
     if @item != nil
       number = $game_party.item_number(@item)
       self.contents.font.color = system_color
-      self.contents.draw_text(4, 0, 200, WLH, Vocab::Possession)
+      self.contents.draw_text(4, 0, 200, WLH, $local.get_text("possession"))
       self.contents.font.color = normal_color
       self.contents.draw_text(4, 0, 200, WLH, number, 2)
       for actor in $game_party.members
