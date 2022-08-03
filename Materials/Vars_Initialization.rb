@@ -8,7 +8,7 @@ class Vars_Initialization
     $game_switches[12] = true #save vittoria
     $game_switches[13] = true #save menu
     $game_switches[217] = false #quit game
-    $game_variables[62] = 2 #Trasporto
+    $game_variables[62] = 0 #Trasporto
 
     # Debug
     $game_switches[556] = $TEST && false #attack-up
