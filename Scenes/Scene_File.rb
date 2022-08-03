@@ -193,6 +193,7 @@ class Scene_File < Scene_Base
     RPG::BGM.fade(1500)
     Graphics.fadeout(60)
     Graphics.wait(40)
+    Utils.check_start
     @last_bgm.play
     @last_bgs.play
   end
