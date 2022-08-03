@@ -62,7 +62,7 @@ class Window_CrissaegrimHud < Window_Base
     draw_hp(@actor, 0, 0)
     draw_mp(@actor, 0, 40)
     # draw_q(@actor, 145, 13) if $game_variables[36] == 0 #Gruppo / Add by Ste
-    # show_state(@actor, 130, 0)
+    show_state(@actor, 130, 0)
     if Crissaegrim_ABS::Distance_Weapons.has_key?(@actor.weapon_id)
       if Crissaegrim_ABS::Distance_Weapons[@actor.weapon_id][5] > 0
         show_icon($data_items[Crissaegrim_ABS::Distance_Weapons[@actor.weapon_id][5]], 128, 3)

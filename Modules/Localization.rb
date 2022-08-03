@@ -146,6 +146,7 @@ class Localization
     "dispenser_of" => 33,
     "quit" => 34,
     "hold_to_upgrade" => 35,
+    "shop_owned" => 36,
     
     "lose" => 39,
     "yes" => 40,
