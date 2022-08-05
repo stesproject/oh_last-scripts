@@ -54,13 +54,11 @@ class Window_ShopBuy < Window_Selectable
     item = @data[index]
     number = $game_party.item_number(item)
     enabled = (item.price <= $game_party.gold and number < 300)
-    if enabled
-      rect = item_rect(index)
-      self.contents.clear_rect(rect)
-      draw_item_name(item, rect.x, rect.y, enabled)
-      rect.width -= 4
-      self.contents.draw_text(rect, item.price, 2)
-    end
+    rect = item_rect(index)
+    self.contents.clear_rect(rect)
+    draw_item_name(item, rect.x, rect.y, enabled)
+    rect.width -= 4
+    self.contents.draw_text(rect, item.price, 2)
   end
   #--------------------------------------------------------------------------
   # * Help Text Update
