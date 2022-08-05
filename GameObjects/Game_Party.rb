@@ -195,7 +195,7 @@ class Game_Party < Game_Unit
     number = item_number(item)
     case item
     when RPG::Item
-      @items[item.id] = [[number + n, 0].max, 999].min
+      @items[item.id] = [[number + n, 0].max, 300].min
     when RPG::Weapon
       @weapons[item.id] = [[number + n, 0].max, 99].min
     when RPG::Armor
