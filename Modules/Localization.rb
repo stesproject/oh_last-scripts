@@ -127,7 +127,7 @@ class Localization
     "accept" => 14,
     "refuse" => 15,
     "shutdown" => 16,
-
+    "wave" => 17,
     "to_title" => 18,
     "save" => 19,
     "item" => 20,
