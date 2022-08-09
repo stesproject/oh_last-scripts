@@ -1858,11 +1858,14 @@ class Scene_Item < Scene_Base
     $item_lock_description -= 1 if $item_lock_description > 0
   end
   def update_item_selection
+    assignable_items = [1, 7, 21]
     for button in Crissaegrim_ABS::Item_Button.keys
       if Input.trigger?(button)
-        Sound.play_decision
-        Crissaegrim_ABS::Item_Button[button] = @item_window.item.id
-        $item_lock_description = 120
+        if assignable_items.include?(@item_window.item.id)
+          Sound.play_decision
+          Crissaegrim_ABS::Item_Button[button] = @item_window.item.id
+          $item_lock_description = 120
+        end
       end
     end
     crissaegrim_abs_sitem_update_item_selection

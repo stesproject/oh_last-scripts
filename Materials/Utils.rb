@@ -48,10 +48,13 @@ class Utils
       end
     when 59 #Mission 2 (energies)
       $game_temp.common_event_id = 41 #Check mission 2
-    when 71 #tor totali
-      if $game_switches[270] && !$game_switches[271] && $game_variables[71] == 3
-        $game_temp.common_event_id = 45 #Torrette
-      end
+    when 71 #Mission 3 (torrette)
+      $game_temp.common_event_id = 71 #Check mission 3
+        if $game_switches[270] && !$game_switches[271] && $game_variables[71] == 3
+          $game_temp.common_event_id = 45 #Check mission 3
+        end
+    when 101
+      $game_temp.common_event_id = 72 #Check dispositivi (Secret Laboratory)
     end
   end
 

@@ -89,7 +89,7 @@ class Localization
     "unlock_card" => 51,
     "locked_chest" => 52,
     "dispenser_out" => 53,
-    "mission3" => 54,
+    "torrette_ok" => 54,
     "game100" => 55,
     "cannot_save" => 56,
     "locked_door" => 57,
