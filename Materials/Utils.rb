@@ -1,5 +1,28 @@
 class Utils
   @@location_picture_index = 7
+  @@music_tracks = [
+    RPG::BGM.new("title", 105, 100),
+    RPG::BGM.new("fight-starts", 110, 100),
+    RPG::BGM.new("memories", 105, 100),
+    RPG::BGM.new("hard-times", 100, 100),
+    RPG::BGM.new("castle", 110, 100),
+    RPG::BGM.new("shelter", 85, 85),
+    RPG::BGM.new("royal-gardens", 100, 100),
+    RPG::BGM.new("lost-valley", 100, 100),
+    RPG::BGM.new("desert", 110, 100),
+    RPG::BGM.new("abandoned-area", 105, 100),
+    RPG::BGM.new("seabed", 70, 100),
+    RPG::BGM.new("jungle", 100, 100),
+    RPG::BGM.new("fire-kingdom", 115, 100),
+    RPG::BGM.new("secret-lab", 105, 100),
+    RPG::BGM.new("final-act", 125, 100),
+    RPG::BGM.new("battle", 140, 100),
+    RPG::BGM.new("boss-fight", 115, 100),
+    RPG::BGM.new("finalboss-battle-1", 100, 100),
+    RPG::BGM.new("finalboss-battle-2", 100, 100),
+    RPG::BGM.new("ending", 110, 100),
+  ]
+  $playing_track = ""
 
   def self.show_location(id)
     x_start = -300
@@ -135,6 +158,17 @@ class Utils
     stats_list.push("#{text} \\v[34]")
 
     return stats_list
+  end
+
+  def self.play_track(id)
+    track = @@music_tracks[id]
+    if $playing_track != track.name
+      track.play
+      $playing_track = track.name
+    else
+      RPG::BGM.stop
+      $playing_track = ""
+    end
   end
 
 end
