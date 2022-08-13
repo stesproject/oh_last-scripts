@@ -9,24 +9,23 @@ class Window_Text < Window_Base
     refresh
   end
   def refresh
-    self.contents.clear
-    self.contents.draw_text(0, 0, 544, 32, ADDON::TEXT)
+    if !$ask_fullscreen
+      self.contents.clear
+      self.contents.draw_text(0, 0, 544, 32, ADDON::TEXT)
+    end
   end
 end
 
 class Scene_Title
   $lang = $default_language
-  $fullscreen = $TEST
   
   alias main_fullscreen? main
   def main
     $locale.load_language
-    if $fullscreen == false
-      auto
-    end
+    $ask_fullscreen = $lang != ""
 
     if ADDON::ASK_LANGUAGE && $lang == ""
-      unless $game_started 
+      unless $ask_fullscreen
         Graphics.freeze
         $data_system = load_data('Data/System.rvdata')
         $game_system = Game_System.new
@@ -37,10 +36,38 @@ class Scene_Title
         Localization::LANG.each do |lang|
           choices.push(Localization::LANGUAGES[lang])
         end
-        @window = Window_Command.new(96, choices)
-        #@window.windowskin = Cache.system("Window2")
+        @window = Window_Command.new(106, choices)
         @window.x = 92
-        @window.y = 240 - @window.height / 2
+        @window.y = 220 - @window.height / 2
+        @window.opacity = 0
+        Graphics.transition
+        loop do
+          Graphics.update
+          Input.update
+          @window.update
+          update_window
+          break if $ask_fullscreen
+        end
+        Graphics.freeze
+        @window.dispose
+        @window = nil
+        @text_window.dispose
+        Graphics.transition
+        Graphics.freeze
+      end
+    elsif $ask_fullscreen
+      unless $game_started
+        Graphics.freeze
+        if $lang != ""
+          $data_system = load_data('Data/System.rvdata')
+          $game_system = Game_System.new
+        end
+        c1 = $local.get_text("fullscreen")
+        c2 = $local.get_text("windowed")
+        choices = [c1, c2]
+        @window = Window_Command.new(136, choices)
+        @window.x = 202
+        @window.y = 208 - @window.height / 2
         @window.opacity = 0
         Graphics.transition
         loop do
@@ -53,23 +80,30 @@ class Scene_Title
         Graphics.freeze
         @window.dispose
         @window = nil
-        @text_window.dispose
         Graphics.transition
         Graphics.freeze
       end
     else
       $game_started = true
     end
-    main_fullscreen?
+    main_fullscreen? if $game_started
   end
   
   def update_window
     if Input.trigger?(Input::C)
       Sound.play_decision
-      $lang = Localization::LANG[@window.index]
 
-      $locale.save_language
-      $game_started = true
+      if !$ask_fullscreen
+        $lang = Localization::LANG[@window.index]
+        $locale.save_language
+        $ask_fullscreen = true
+      elsif $ask_fullscreen
+        if @window.index == 0
+          auto
+        end
+        $game_started = true
+      end
+
     end
   end
 
@@ -80,6 +114,5 @@ class Scene_Title
     keybd.call(13, 0, 2, 0)
     keybd.call(0xA4, 0, 2, 0)
     $fullscreen = true
-    # $game_started = true
   end
 end

@@ -147,7 +147,8 @@ class Localization
     "quit" => 34,
     "hold_to_upgrade" => 35,
     "shop_owned" => 36,
-    
+    "fullscreen" => 37,
+    "windowed" => 38,
     "lose" => 39,
     "yes" => 40,
     "no" => 41,
