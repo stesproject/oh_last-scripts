@@ -1,7 +1,7 @@
 class Utils
   @@location_picture_index = 7
   @@music_tracks = [
-    RPG::BGM.new("title", 105, 100),
+    RPG::BGM.new("title", 125, 100),
     RPG::BGM.new("fight-starts", 110, 100),
     RPG::BGM.new("memories", 105, 100),
     RPG::BGM.new("hard-times", 100, 100),

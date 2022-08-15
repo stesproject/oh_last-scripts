@@ -22,7 +22,7 @@ class Scene_Title
   alias main_fullscreen? main
   def main
     $locale.load_language
-    $ask_fullscreen = $lang != ""
+    $ask_fullscreen = $lang != "" && !$TEST
 
     if ADDON::ASK_LANGUAGE && $lang == ""
       unless $ask_fullscreen
