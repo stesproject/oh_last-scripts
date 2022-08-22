@@ -169,7 +169,7 @@ class Game_Player < Game_Character
   #--------------------------------------------------------------------------
   def moveto(x, y)
     super
-    center(x, y)                                      # Centering
+    center(x, y) if !$game_switches[267]              # Centering | Add by Ste fix for Lock_Screen
     make_encounter_count                              # Initialize encounter
     if in_vehicle?                                    # Riding in vehicle
       vehicle = $game_map.vehicles[@vehicle_type]     # Get vehicle
