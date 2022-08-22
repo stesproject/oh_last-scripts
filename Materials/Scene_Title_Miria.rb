@@ -450,7 +450,7 @@ include  MOG_VX01
       item_description = items[i].respond_to?(:description) ? items[i].description : ""
       item = $local.get_db_object(item_name)
       items[i].name = item.name
-      if item.respond_to?(:description)
+      if item.respond_to?(:desc)
         items[i].description = item.desc
       end
     end
