@@ -58,6 +58,7 @@ class Boss_HUD < Sprite
     self.bitmap.stretch_blt(rect1, meter, src_rect1)
     self.x = (544-base.width)/2
     self.y = (416-base.height)-24
+    self.z = 1000
   end
 end
 
