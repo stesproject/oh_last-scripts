@@ -218,4 +218,10 @@ class Game_Screen
       picture.update
     end
   end
+  #--------------------------------------------------------------------------
+  # * Save Screen Color Tone | Add by Ste
+  #--------------------------------------------------------------------------
+  def save_screen_tone()
+    $saved_tone = @tone.clone
+  end
 end
