@@ -12,7 +12,8 @@ class Game_Screen
   attr_reader   :brightness               # brightness
   attr_reader   :tone                     # color tone
   attr_reader   :flash_color              # flash color
-  attr_reader   :shake                    # shake positioning
+  attr_accessor   :shake                    # shake positioning
+  attr_accessor   :shake_duration                    # shake duration | Add by Ste
   attr_reader   :pictures                 # pictures
   attr_reader   :weather_type             # weather type
   attr_reader   :weather_max              # max number of weather sprites
