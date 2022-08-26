@@ -548,6 +548,9 @@ class Localization
   def row_length_max_reached?(row)
     row_cleaned = row.gsub(SPECIAL_SYMBOLS) {}
     row_cleaned = row_cleaned.gsub(SPECIAL_CHARS) {"a"}
+    if @row_max_length == nil
+      initialize
+    end
     return row_cleaned.size >= @row_max_length
   end
 
