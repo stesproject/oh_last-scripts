@@ -177,10 +177,16 @@ class Scene_Map
       elsif @show == false
         @hud.visible = false
         @bg.visible = false if Crissaegrim_Hud::Background != ""
+        $game_map.screen.pictures[3].erase
+        $game_map.screen.pictures[5].erase
+        $game_map.screen.pictures[15].erase
       end
      else
        @hud.visible = false
        @bg.visible = false if Crissaegrim_Hud::Background != ""
+       $game_map.screen.pictures[3].erase
+       $game_map.screen.pictures[5].erase
+       $game_map.screen.pictures[15].erase
      end
    end
 end
